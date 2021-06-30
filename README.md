@@ -1,1 +1,1 @@
-Algorithm in JavaScript
+JavaScript Algorithms and Data Structures.
