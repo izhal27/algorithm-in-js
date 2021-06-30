@@ -1,0 +1,22 @@
+{
+  "name": "algorithm-in",
+  "version": "1.0.0",
+  "description": "JavaScript Algorithms and Data Structures.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izhal27/algorithm-in-js.git"
+  },
+  "author": "Risal Walangadi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/izhal27/algorithm-in-js/issues"
+  },
+  "homepage": "https://github.com/izhal27/algorithm-in-js#readme",
+  "dependencies": {
+    "jest": "^27.0.6"
+  }
+}
