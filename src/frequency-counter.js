@@ -12,7 +12,7 @@
 // ([1, 1, 2, 3], [9, 1, 1, 25]) false
 
 // O(n^2)
-function same1(arr1, arr2) {
+function sameCheck1(arr1, arr2) {
   // kembalikan false jika kedua array tidak sama panjang
   if (arr1.length !== arr2.length) {
     return false;
@@ -36,7 +36,7 @@ function same1(arr1, arr2) {
 }
 
 // O(n)
-function same2(arr1, arr2) {
+function sameCheck2(arr1, arr2) {
   if (arr1.length !== arr2.length) {
     return false;
   }
@@ -67,4 +67,4 @@ function same2(arr1, arr2) {
   return true;
 }
 
-module.exports = { same1, same2 };
+module.exports = { sameCheck1, sameCheck2 };

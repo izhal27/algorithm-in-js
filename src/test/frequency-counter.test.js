@@ -1,4 +1,4 @@
-const frequencyCounter = require('../frequency-counter');
+const { sameCheck1, sameCheck2 } = require('../frequency-counter');
 let truthyArrays, falsyArrays;
 
 beforeEach(() => {
@@ -44,13 +44,13 @@ beforeEach(() => {
 describe('Frequency counter version 1', () => {
   it('should return true', () => {
     truthyArrays.forEach(array => {
-      expect(frequencyCounter.same1(array[0], array[1])).toBeTruthy();
+      expect(sameCheck1(array[0], array[1])).toBeTruthy();
     });
   });
 
   it('should return false', () => {
     falsyArrays.forEach(array => {
-      expect(frequencyCounter.same1(array[0], array[1])).toBeFalsy();
+      expect(sameCheck1(array[0], array[1])).toBeFalsy();
     });
   });
 });
@@ -58,13 +58,13 @@ describe('Frequency counter version 1', () => {
 describe('Frequency counter version 2', () => {
   it('should return true', () => {
     truthyArrays.forEach(array => {
-      expect(frequencyCounter.same2(array[0], array[1])).toBeTruthy();
+      expect(sameCheck2(array[0], array[1])).toBeTruthy();
     });
   });
 
   it('should return false', () => {
     falsyArrays.forEach(array => {
-      expect(frequencyCounter.same2(array[0], array[1])).toBeFalsy();
+      expect(sameCheck2(array[0], array[1])).toBeFalsy();
     });
   });
 });
