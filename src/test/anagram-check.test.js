@@ -1,4 +1,4 @@
-const { anagramCheck1, anagramCheck2 } = require('../anagram_check');
+const { anagramCheck1, anagramCheck2 } = require('../anagram-check');
 let truthyStrings, falsyStrings;
 
 beforeEach(() => {
