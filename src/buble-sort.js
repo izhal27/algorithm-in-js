@@ -1,4 +1,4 @@
-// O(n)
+// O(n²)
 function bubleSort(arr) {
   var swap = (arr, idx1, idx2) => {
     // const temp = arr[idx1];
