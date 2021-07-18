@@ -1,6 +1,6 @@
 # JavaScript Algorithms and Data Structures.
 
-```js
+```shell
 $ git clone git@github.com:izhal27/algorithm-in-js.git
 $ cd algorithm-in-js
 $ npm install
