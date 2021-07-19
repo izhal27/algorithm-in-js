@@ -1,7 +1,7 @@
 // O(n^2)
 function selectionSort(arr) {
   // rubah posisi item index ke-idx1 dan idx2
-  var swap = (arr, idx1, idx2) => {
+  const swap = (arr, idx1, idx2) => {
     // const temp = arr[idx1];
     // arr[idx1] = arr[idx2]
     // arr[idx2] = temp
