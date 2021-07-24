@@ -42,28 +42,35 @@ describe('Singly linked list', () => {
     });
 
     it('should pop an item from list', () => {
+      list.pop(); // hello there
       const removedNode = list.pop();
 
-      expect(list.length).toBe(2);
-      expect(removedNode.value).toBe('hello there');
+      expect(list.length).toBe(1);
+      expect(removedNode.value).toBe('testing');
+      expect(removedNode.next).toBeFalsy();
     });
 
-    it('should have one item/head only', () => {
-      list.pop(); // testing
+    it('should have one item/head and tail only', () => {
+      list.pop(); // hello there
       const removedTailNode = list.pop();
 
       expect(list.length).toBe(1);
       expect(removedTailNode.value).toBe('testing');
+      expect(removedTailNode.next).toBeFalsy();
       expect(list.head.value).toBe('hello world');
+      expect(list.head.next).toBeFalsy();
       expect(list.tail.value).toBe('hello world');
+      expect(list.tail.next).toBeFalsy();
     });
 
     it('should have no head or tail', () => {
-      list.pop(); // hello world
-      list.pop(); // testing
       list.pop(); // hello there
+      list.pop(); // testing
+      const removedTailNode = list.pop(); // hello world
 
       expect(list.length).toBe(0);
+      expect(removedTailNode.value).toBe('hello world');
+      expect(removedTailNode.next).toBeFalsy();
       expect(list.head).toBeFalsy();
       expect(list.tail).toBeFalsy();
     });
@@ -72,9 +79,8 @@ describe('Singly linked list', () => {
       list.pop(); // hello world
       list.pop(); // testing
       list.pop(); // hello there
-      const removedNode = list.pop();
 
-      expect(removedNode).toBeFalsy(); // or toBe(undefined)
+      expect(list.pop()).toBeFalsy(); // or toBe(undefined)
     });
   });
 
@@ -98,6 +104,7 @@ describe('Singly linked list', () => {
 
       expect(list.length).toBe(4);
       expect(removedNode.value).toBe('fifth');
+      expect(removedNode.next).toBeFalsy();
       expect(list.head.value).toBe('fourth');
       expect(list.tail.value).toBe('first');
     });
@@ -120,10 +127,9 @@ describe('Singly linked list', () => {
       list.shift(); // third
       list.shift(); // second
       list.shift(); // first
-      const removedNode = list.shift();
 
       expect(list.length).toBe(0);
-      expect(removedNode).toBeFalsy(); // or toBe(undefined)
+      expect(list.shift()).toBeFalsy(); // or toBe(undefined)
     });
   });
 
