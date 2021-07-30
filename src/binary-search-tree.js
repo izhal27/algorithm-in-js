@@ -102,13 +102,70 @@ class BinarySearchTree {
 
       if (current.left) {
         queue.enqueue(current.left);
-      } 
+      }
 
       if (current.right) {
         queue.enqueue(current.right);
       }
     }
 
+    return visited;
+  }
+
+  DFSPreOrder() {
+    const visited = [];
+
+    function traverse(node) {
+      visited.push(node.value);
+
+      if (node.left) {
+        traverse(node.left);
+      }
+
+      if (node.right) {
+        traverse(node.right);
+      }
+    }
+
+    traverse(this.root);
+    return visited;
+  }
+
+  DFSPostOrder() {
+    const visited = [];
+
+    function traverse(node) {
+      if (node.left) {
+        traverse(node.left);
+      }
+
+      if (node.right) {
+        traverse(node.right);
+      }
+
+      visited.push(node.value);
+    }
+
+    traverse(this.root);
+    return visited;
+  }
+
+  DFSInOrder() {
+    const visited = [];
+
+    function traverse(node) {
+      if (node.left) {
+        traverse(node.left);
+      }
+
+      visited.push(node.value);
+
+      if (node.right) {
+        traverse(node.right);
+      }
+    }
+
+    traverse(this.root);
     return visited;
   }
 }

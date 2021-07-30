@@ -12,6 +12,9 @@ describe('Binary search tree', () => {
       expect(bst).toHaveProperty('insert');
       expect(bst).toHaveProperty('find');
       expect(bst).toHaveProperty('BFS');
+      expect(bst).toHaveProperty('DFSPreOrder');
+      expect(bst).toHaveProperty('DFSPostOrder');
+      expect(bst).toHaveProperty('DFSInOrder');
     });
   });
 
@@ -73,6 +76,18 @@ describe('Binary search tree', () => {
 
     it('should match return value with BFS', () => {
       expect(bst.BFS()).toStrictEqual([87, 7, 207, 5, 27, 101, 303]);
+    });
+
+    it('should match return value with DFS Pre order', () => {
+      expect(bst.DFSPreOrder()).toStrictEqual([87, 7, 5, 27, 207, 101, 303]);
+    });
+
+    it('should match return value with DFS Post order', () => {
+      expect(bst.DFSPostOrder()).toStrictEqual([5, 27, 7, 101, 303, 207, 87]);
+    });
+
+    it('should match return value with DFS In order', () => {
+      expect(bst.DFSInOrder()).toStrictEqual([5, 7, 27, 87, 101, 207, 303]);
     });
   });
 });
