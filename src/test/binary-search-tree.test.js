@@ -11,6 +11,7 @@ describe('Binary search tree', () => {
       expect(bst).toHaveProperty('root');
       expect(bst).toHaveProperty('insert');
       expect(bst).toHaveProperty('find');
+      expect(bst).toHaveProperty('BFS');
     });
   });
 
@@ -56,6 +57,22 @@ describe('Binary search tree', () => {
       expect(bst.find(78)).toBeFalsy();
       expect(bst.contains(34)).toBeFalsy();
       expect(bst.contains(44)).toBeFalsy();
+    });
+  });
+
+  describe('Breath first search & Depth first search', () => {
+    beforeEach(() => {
+      bst.insert(87);
+      bst.insert(7);
+      bst.insert(207);
+      bst.insert(27);
+      bst.insert(5);
+      bst.insert(101);
+      bst.insert(303);
+    });
+
+    it('should match return value with BFS', () => {
+      expect(bst.BFS()).toStrictEqual([87, 7, 207, 5, 27, 101, 303]);
     });
   });
 });
