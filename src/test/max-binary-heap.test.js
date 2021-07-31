@@ -14,7 +14,7 @@ describe('Max binary heap implementation', () => {
     });
   });
 
-  describe('Insert', () => {
+  describe('Insert & Extract max value', () => {
     beforeEach(() => {
       mbh.values = [87, 50, 15, 40, 27, 12, 5];
     });
