@@ -14,6 +14,7 @@ describe('Graph', () => {
       expect(graph).toHaveProperty('removeEdge');
       expect(graph).toHaveProperty('removeVertex');
       expect(graph).toHaveProperty('DFSRecrusive');
+      expect(graph).toHaveProperty('DFSIterative');
     });
   });
 
@@ -137,10 +138,16 @@ describe('Graph', () => {
       graph.addEdge('E', 'F');
     });
 
-    it('should return a list of DFS', () => {
+    it('should return a list of DFS recrusive', () => {
       expect(graph.DFSRecrusive('A')).toEqual(['A', 'B', 'D', 'E', 'C', 'F']);
       expect(graph.DFSRecrusive('B')).toEqual(['B', 'A', 'C', 'E', 'D', 'F']);
       expect(graph.DFSRecrusive('F')).toEqual(['F', 'D', 'B', 'A', 'C', 'E']);
+    });
+
+    it('should return a list of DFS iterative', () => {
+      expect(graph.DFSIterative('A')).toEqual(['A', 'C', 'E', 'F', 'D', 'B']);
+      expect(graph.DFSIterative('B')).toEqual(['B', 'D', 'F', 'E', 'C', 'A']);
+      expect(graph.DFSIterative('F')).toEqual(['F', 'E', 'C', 'A', 'B', 'D']);
     });
   });
 });

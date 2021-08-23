@@ -1,3 +1,5 @@
+const Stack = require('./stack');
+
 class Graph {
   constructor() {
     this.adjacencyList = {};
@@ -60,6 +62,28 @@ class Graph {
     };
 
     DFS(startVertex);
+    return result;
+  }
+
+  DFSIterative(startVertex) {
+    const result = [];
+    const stack = new Stack();
+    stack.push(startVertex);
+    const visited = {};
+    visited[startVertex] = true;
+
+    while (stack.length) {
+      const vertex = stack.pop();
+      result.push(vertex);
+
+      this.adjacencyList[vertex].forEach((neighborhood) => {
+        if (!visited[neighborhood]) {
+          visited[neighborhood] = true;
+          stack.push(neighborhood);
+        }
+      });
+    }
+
     return result;
   }
 }
