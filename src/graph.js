@@ -1,4 +1,5 @@
 const Stack = require('./stack');
+const Queue = require('./queue');
 
 class Graph {
   constructor() {
@@ -80,6 +81,28 @@ class Graph {
         if (!visited[neighborhood]) {
           visited[neighborhood] = true;
           stack.push(neighborhood);
+        }
+      });
+    }
+
+    return result;
+  }
+
+  BFS(startVertex) {
+    const result = [];
+    const queue = new Queue();
+    queue.enqueue(startVertex);
+    const visited = {};
+    visited[startVertex] = true;
+
+    while (queue.length) {
+      const vertex = queue.dequeue();
+      result.push(vertex);
+
+      this.adjacencyList[vertex].forEach((neighborhood) => {
+        if (!visited[neighborhood]) {
+          visited[neighborhood] = true;
+          queue.enqueue(neighborhood);
         }
       });
     }

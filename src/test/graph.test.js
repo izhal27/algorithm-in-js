@@ -15,6 +15,7 @@ describe('Graph', () => {
       expect(graph).toHaveProperty('removeVertex');
       expect(graph).toHaveProperty('DFSRecrusive');
       expect(graph).toHaveProperty('DFSIterative');
+      expect(graph).toHaveProperty('BFS');
     });
   });
 
@@ -148,6 +149,12 @@ describe('Graph', () => {
       expect(graph.DFSIterative('A')).toEqual(['A', 'C', 'E', 'F', 'D', 'B']);
       expect(graph.DFSIterative('B')).toEqual(['B', 'D', 'F', 'E', 'C', 'A']);
       expect(graph.DFSIterative('F')).toEqual(['F', 'E', 'C', 'A', 'B', 'D']);
+    });
+
+    it('should return a list of BFS', () => {
+      expect(graph.BFS('A')).toEqual(['A', 'B', 'C', 'D', 'E', 'F']);
+      expect(graph.BFS('B')).toEqual(['B', 'A', 'D', 'C', 'E', 'F']);
+      expect(graph.BFS('F')).toEqual(['F', 'D', 'E', 'B', 'C', 'A']);
     });
   });
 });
