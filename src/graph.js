@@ -39,6 +39,29 @@ class Graph {
 
     delete this.adjacencyList[vertex];
   }
+
+  DFSRecrusive(startVertex) {
+    const result = [];
+    const visited = {};
+
+    const DFS = (vertex) => {
+      if (!vertex) {
+        return null;
+      }
+
+      result.push(vertex);
+      visited[vertex] = true;
+
+      for (let neighborhood of this.adjacencyList[vertex]) {
+        if (!visited[neighborhood]) {
+          DFS(neighborhood);
+        }
+      }
+    };
+
+    DFS(startVertex);
+    return result;
+  }
 }
 
 module.exports = Graph;

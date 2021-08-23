@@ -13,6 +13,7 @@ describe('Graph', () => {
       expect(graph).toHaveProperty('addEdge');
       expect(graph).toHaveProperty('removeEdge');
       expect(graph).toHaveProperty('removeVertex');
+      expect(graph).toHaveProperty('DFSRecrusive');
     });
   });
 
@@ -115,6 +116,31 @@ describe('Graph', () => {
       graph.removeVertex('G');
 
       expect(Object.keys(graph.adjacencyList).length).toEqual(5);
+    });
+  });
+
+  describe('Depth First Search and Breath First Search', () => {
+    beforeEach(() => {
+      graph.addVertex('A');
+      graph.addVertex('B');
+      graph.addVertex('C');
+      graph.addVertex('D');
+      graph.addVertex('E');
+      graph.addVertex('F');
+
+      graph.addEdge('A', 'B');
+      graph.addEdge('A', 'C');
+      graph.addEdge('B', 'D');
+      graph.addEdge('C', 'E');
+      graph.addEdge('D', 'E');
+      graph.addEdge('D', 'F');
+      graph.addEdge('E', 'F');
+    });
+
+    it('should return a list of DFS', () => {
+      expect(graph.DFSRecrusive('A')).toEqual(['A', 'B', 'D', 'E', 'C', 'F']);
+      expect(graph.DFSRecrusive('B')).toEqual(['B', 'A', 'C', 'E', 'D', 'F']);
+      expect(graph.DFSRecrusive('F')).toEqual(['F', 'D', 'B', 'A', 'C', 'E']);
     });
   });
 });
