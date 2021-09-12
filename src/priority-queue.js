@@ -1,7 +1,3 @@
-const swap = (arr, idx1, idx2) => {
-  [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
-};
-
 class Node {
   constructor(value, priority) {
     this.value = value;
@@ -9,13 +5,13 @@ class Node {
   }
 }
 
-class MaxBinaryHeap {
+class PriorityQueue {
   constructor() {
     this.values = [];
   }
 
-  enqueue(value, priority) {
-    const newNode = new Node(value, priority);
+  enqueue(val, priority) {
+    let newNode = new Node(val, priority);
     this.values.push(newNode);
     this.bubbleUp();
 
@@ -27,61 +23,73 @@ class MaxBinaryHeap {
     const currentValue = this.values[index];
 
     while (index > 0) {
-      const parentIndex = Math.floor((index - 1) / 2);
-      const parentValue = this.values[parentIndex];
+      let parentIndex = Math.floor((index - 1) / 2);
+      let parent = this.values[parentIndex];
 
-      if (currentValue.priority >= parentValue.priority) {
+      if (currentValue.priority >= parent.priority) {
         break;
       }
 
-      swap(this.values, parentIndex, index);
+      this.values[parentIndex] = currentValue;
+      this.values[index] = parent;
       index = parentIndex;
     }
   }
-
   dequeue() {
     if (!this.values.length) {
       return null;
     }
 
-    swap(this.values, 0, this.values.length - 1);
-    const removedValue = this.values.pop();
-    this.sinkDown();
+    const min = this.values[0];
+    const end = this.values.pop();
 
-    return removedValue;
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      this.sinkDown();
+    }
+
+    return min;
   }
 
   sinkDown() {
-    let parentIndex = 0;
+    let index = 0;
+    const length = this.values.length;
+    const element = this.values[0];
 
-    while (parentIndex < this.values.length) {
-      const leftChildIndex = Math.floor(2 * parentIndex + 1);
-      const rightChildIndex = Math.floor(2 * parentIndex + 2);
-      const parent = this.values[parentIndex];
-      const leftChild = this.values[leftChildIndex];
-      const rightChild = this.values[rightChildIndex];
-      let minIndex = null;
+    while (true) {
+      let leftChildIndex = 2 * index + 1;
+      let rightChildIndex = 2 * index + 2;
+      let leftChild, rightChild;
+      let swap = null;
 
-      if (leftChild && parent.priority > leftChild.priority) {
-        minIndex = leftChildIndex;
+      if (leftChildIndex < length) {
+        leftChild = this.values[leftChildIndex];
+
+        if (leftChild.priority < element.priority) {
+          swap = leftChildIndex;
+        }
       }
 
-      if (
-        rightChild &&
-        parent.priority > rightChild.priority &&
-        this.values[minIndex].priority > rightChild.priority
-      ) {
-        minIndex = rightChildIndex;
+      if (rightChildIndex < length) {
+        rightChild = this.values[rightChildIndex];
+
+        if (
+          (!swap && rightChild.priority < element.priority) ||
+          (swap && rightChild.priority < leftChild.priority)
+        ) {
+          swap = rightChildIndex;
+        }
       }
 
-      if (!minIndex) {
+      if (swap === null) {
         break;
       }
 
-      swap(this.values, parentIndex, minIndex);
-      parentIndex = minIndex;
+      this.values[index] = this.values[swap];
+      this.values[swap] = element;
+      index = swap;
     }
   }
 }
 
-module.exports = MaxBinaryHeap;
+module.exports = PriorityQueue;

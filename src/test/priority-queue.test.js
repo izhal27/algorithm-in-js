@@ -5,7 +5,7 @@ beforeEach(() => {
   pq = new PriorityQueue();
 });
 
-describe('Max binary heap implementation', () => {
+describe('Priority Queue implementation', () => {
   describe('Check class properties', () => {
     it('should have properties', () => {
       expect(pq).toHaveProperty('values');
